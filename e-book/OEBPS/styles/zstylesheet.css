@@ -1,0 +1,318 @@
+/*Zylon Stylesheet CSS - zstylesheet.css - v0.1
+-------------------------------------------
+
+Part of Project Zylon though licensed under the Unlicense. License can be viewed at: http://unlicense.org/
+Need help? Refer to the Zylon Guide at: (ebookbuild.github.io/ - link doesn't work yet)
+
+Exact values are recommended. Avoid using words such as small to describe the size of a font or red for the colour.
+Use ems instead of percentages.
+
+-------------------------------------------*/
+
+/*Titles*/
+
+h1.title
+{
+	font-size: 2em;
+	font-weight: bold;
+	text-align: center;
+}
+
+h2.title
+{
+	font-size: 1.7em;
+	font-weight: normal;
+	text-align: center;
+}
+
+h3.title
+{
+	font-size: 1.5em;
+	font-weight: normal;
+	text-align: center;
+	font-variant: small-caps;
+}
+
+h4.title
+{
+	margin-top: 7em;
+	font-size: 1.5em;
+	font-weight: normal;
+	text-align: center;
+}
+
+/*Chapter Headings*/
+
+h1.heading
+{
+	font-size: 1.7em;
+	font-weight: bold;
+	text-align: left;
+}
+
+/*Contents headings*/
+
+h1.toc
+{
+	margin: 0em;
+	font-size: 1.4em;
+}
+
+h2.toc
+{
+	margin: 0em;
+	font-size: 1.4em;
+	font-variant: small-caps;
+}
+
+h1.indent, h2.indent
+{
+	margin: 0em;
+	text-indent: 1em;
+}
+
+/*Sub Headings*/
+
+h1.subheading
+{
+	font-size: 1.2em;
+	font-weight: bold;
+	text-align: left;
+	margin-bottom: 0em;
+}
+
+h2.subheading
+{
+	font-size: 1.2em;
+	font-weight: bold;
+	text-align: left;
+	font-variant: small-caps;
+	margin-bottom: 0em;
+}
+
+/*Paragraphs*/
+
+p
+{
+	font-size: 1em;
+	text-align: left;
+	margin: 0px 0em 0em 0em;
+	text-align: justify;
+	text-indent: 1em;
+	hyphens: none;
+	display: inline-block;
+}
+
+.small /*For the indicia*/
+{
+	font-size: 0.9em;
+}
+
+.noindent /*Every starting paragraph should start with this.*/
+{
+	text-indent: 0em !important;
+}
+
+.top
+{
+	margin-top: 1em;
+}
+
+.bottom
+{
+	margin-bottom: 1em;
+}
+
+.left
+{
+	text-align: left;
+}
+
+.center
+{
+	text-align: center !important;
+  text-indent: 0em !important;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.right
+{
+	text-align: right;
+}
+
+.sans
+{
+	font-family: sans-serif;
+}
+
+.mono
+{
+	font-family: monospace;
+}
+
+/*Quotes*/
+/*Quotes are used to show a quote by a person or source. Recommended to write the quote in italics, though this isn't set in the CSS by default.*/
+
+p.noindent-quote
+{
+	text-align: justify;
+	text-indent: 0em;
+	margin-left: 1em;
+	margin-right: 1em;
+	font-size: 0.9em;
+	font-style: normal;
+}
+
+p.quote
+{
+	text-align: justify;
+	text-indent: 1em;
+	margin-left: 1em;
+	margin-right: 1em;
+	font-size: 0.9em;
+	font-style: normal;
+}
+
+p.quote2
+{
+	text-align: justify;
+	text-indent: 2em;
+	margin-left: 1em;
+	margin-right: 1em;
+	font-size: 0.9em;
+	font-style: normal;
+}
+
+/*References*/
+
+.ref
+{
+	margin-left: 0em;
+	font-size: 0.9em;
+}
+
+/*Initial Letter*/
+/*Intial letters (also known as dropcaps or illuminated letters) are the large letters used at the start of a chapter for emphasis.*/
+
+.initial /*Code snagged from Wikipedia.*/
+{
+	float: left;
+	font-size: 4em;
+	line-height: 0.95em;
+	vertical-align: baseline;
+}
+
+/*Formatting*/
+/*Use <span></span> tags use these for formatting the e-book’s text*/
+
+.sc /*Adds small caps to text*/
+{
+	font-variant: small-caps;
+}
+
+.uli /*Underlines text*/
+{
+	text-decoration: underline;
+}
+
+.st /* Strikes through the text */
+{
+	text-decoration: line-through;
+}
+
+/*Text Alignment*/
+
+/*Lists (Ordered and Unordered)*/
+
+ol, ul
+{
+  margin-top: 1em;
+  margin-bottom: 1em;
+  text-align: justify;
+}
+
+li
+{
+  margin-bottom: 0em;
+  hyphens: none;
+}
+
+.sublist
+{
+	margin: 0em;
+}
+
+/*Tables*/
+table
+{
+  margin-top: 2em;
+  margin-bottom: 2em;
+	border-collapse: collapse;
+	border-style: solid;
+	border-width: 0.1em;
+	border-color: #000;
+}
+
+td, th
+{
+  text-indent: 0em !important;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+  padding-top: 0.2em;
+  margin-left: 0em;
+  margin-right: 0em;
+  vertical-align: top;
+  text-align: center;
+  page-break-inside: avoid;
+  hyphens: none;
+  font-size: 0.9em;
+	border-style: solid;
+	border-width: 0.2em;
+	border-color: #000;
+}
+
+/*Images*/
+
+.image-center
+{
+	margin-top: 1em;
+	margin-bottom: 1em;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	/*border: solid 2px; Useful for debugging.*/
+}
+
+.image-left
+{
+	margin-top: 1em;
+	margin-bottom: 1em;
+	margin-left: 0em;
+	margin-right: 0em;
+	width: 100%;
+	/*border: solid 2px; Useful for debugging.*/
+}
+
+.image
+{
+	display: block;
+	margin: auto;
+	/*border: solid red 1px;*/
+}
+
+.figure-caption
+{
+	margin-bottom: 1em;
+	font-size: 1em;
+	text-align: center !important;
+	color: #434343;
+	/*border: solid 1px;*/
+}
+
+/*RTL (Right-to-Left) - For Arabic, Persian, Hebrew, etc...*/
+
+.rtl
+{
+	direction: rtl;
+}

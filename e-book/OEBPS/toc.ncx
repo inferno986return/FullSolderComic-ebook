@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ncx PUBLIC "-//NISO//DTD ncx 2005-1//EN" "http://www.daisy.org/z3986/2005/ncx-2005-1.dtd"><ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
+<head>
+	<meta name="dtb:uid" content="-" />
+	<meta name="dtb:depth" content="1" />
+	<meta name="dtb:totalPageCount" content="0" />
+	<meta name="dtb:maxPageNumber" content="0" />
+</head>
+<docTitle>
+	<text>Soldering is Easy</text>
+</docTitle>
+<navMap>
+	<navPoint id="navpoint-0" playOrder="1">
+		<navLabel>
+			<text>Front Cover</text>
+		</navLabel>
+		<content src="bookcover.xhtml" />
+	</navPoint>
+	<navPoint id="navpoint-1" playOrder="2">
+		<navLabel>
+			<text>Indicia</text>
+		</navLabel>
+		<content src="indicia.xhtml" />
+	</navPoint>
+	<navPoint id="navpoint-2" playOrder="3">
+		<navLabel>
+			<text>License</text>
+		</navLabel>
+		<content src="license.xhtml" />
+	</navPoint>
+	<navPoint id="navpoint-3" playOrder="4">
+		<navLabel>
+			<text>Page 1</text>
+		</navLabel>
+		<content src="page1.xhtml" />
+	</navPoint>
+	<navPoint id="navpoint-4" playOrder="5">
+		<navLabel>
+			<text>Page 2</text>
+		</navLabel>
+		<content src="page2.xhtml" />
+	</navPoint>
+	<navPoint id="navpoint-5" playOrder="6">
+		<navLabel>
+			<text>Page 3</text>
+		</navLabel>
+		<content src="page3.xhtml" />
+	</navPoint>
+	<navPoint id="navpoint-6" playOrder="7">
+		<navLabel>
+			<text>Page 4</text>
+		</navLabel>
+		<content src="page4.xhtml" />
+	</navPoint>
+	<navPoint id="navpoint-7" playOrder="8">
+		<navLabel>
+			<text>Page 5</text>
+		</navLabel>
+		<content src="page5.xhtml" />
+	</navPoint>
+	<navPoint id="navpoint-8" playOrder="9">
+		<navLabel>
+			<text>Page 6</text>
+		</navLabel>
+		<content src="page6.xhtml" />
+	</navPoint>
+	<navPoint id="navpoint-9" playOrder="10">
+		<navLabel>
+			<text>Page 7</text>
+		</navLabel>
+		<content src="page7.xhtml" />
+	</navPoint>
+</navMap>
+</ncx>
