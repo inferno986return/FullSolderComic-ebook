@@ -70,5 +70,11 @@
 		</navLabel>
 		<content src="page7.xhtml" />
 	</navPoint>
+	<navPoint id="navpoint-10" playOrder="11">
+		<navLabel>
+			<text>Blank page</text>
+		</navLabel>
+		<content src="toc.xhtml" />
+	</navPoint>
 </navMap>
 </ncx>

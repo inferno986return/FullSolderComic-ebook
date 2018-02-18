@@ -88,6 +88,12 @@
 						"indentation": "1",
 						"pageName": "Page 7",
 						"fileName": "page7.xhtml"
+					},
+					{
+						"pageNumber": "10",
+						"indentation": "1",
+						"pageName": "Blank page",
+						"fileName": "toc.xhtml"
 					}
 				]
 }
