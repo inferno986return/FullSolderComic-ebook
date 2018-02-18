@@ -6,7 +6,7 @@ This is an ePub production of MightyOhm's soldering tutorial comic *Solder is Ea
 
 ### E-book:
 
-I have provided an ePub and the code needed to recreate it, feel free to use the code for your own projects as per the licenses stated below. Currently the ePub passes [epubcheck 4.0.2](https://github.com/IDPF/epubcheck) with `No errors or warnings detected.`
+I have provided an ePub and the code needed to recreate it, feel free to use the code for your own projects as per the licenses stated below.
 
 ### Licensing:
 
