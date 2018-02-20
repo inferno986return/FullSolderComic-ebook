@@ -67,7 +67,7 @@ def GenOPF():
     #Write out the NCX and cover image files
     opf.write('\t\t<item href="toc.ncx" id="ncx" media-type="application/x-dtbncx+xml"/>\n')
     #opf.write('\t\t<item href="'+ data["imagesFolder"] + '/' + data["epubCover"] +'" id="main_cover_image" media-type="image/jpeg"/>\n') #Removes duplicate output, leaving commented as I might it later for the Kindle covers.
-
+        
     #Write out the images
 
     imageindex = 0
@@ -229,6 +229,12 @@ def GenEpub():
     mime.close()
 
     #Generate the META-INF.
+    try:
+        os.stat('META-INF')
+
+    except:
+        os.mkdir('META-INF')
+
     metainf = open('META-INF' + os.sep + "container.xml", "w")
 
     metainf.write('<?xml version="1.0"?>\n')
@@ -248,16 +254,18 @@ def GenEpub():
     for dirname, subdirs, files in os.walk('META-INF'):
         zf.write(dirname)
         for filename in files:
-            zf.write(os.path.join(dirname, filename))
-            print('dirname:' + dirname)
-            print('filename:' + filename)
+            if filename != '.DS_Store': #epubcheck hates uninvited files and macOS places these everywhere.
+                    zf.write(os.path.join(dirname, filename))
+                    print('dirname:' + dirname)
+                    print('filename:' + filename)
 
     for dirname, subdirs, files in os.walk(data["containerFolder"]):
         zf.write(dirname)
         for filename in files:
-            zf.write(os.path.join(dirname, filename))
-            print('dirname:' + dirname)
-            print('filename:' + filename)
+            if filename != '.DS_Store': #epubcheck hates uninvited files
+                zf.write(os.path.join(dirname, filename))
+                print('dirname:' + dirname)
+                print('filename:' + filename)
 
     zf.close()
 

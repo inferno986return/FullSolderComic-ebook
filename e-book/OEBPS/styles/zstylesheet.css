@@ -103,7 +103,7 @@ p
 	display: inline-block;
 }
 
-.small /*For the indicia*/
+.small-text /*For the indicia*/
 {
 	font-size: 0.9em;
 }
@@ -118,9 +118,19 @@ p
 	margin-top: 1em;
 }
 
+.top2
+{
+	margin-top: 2em;
+}
+
 .bottom
 {
 	margin-bottom: 1em;
+}
+
+.bottom2
+{
+	margin-bottom: 2em;
 }
 
 .left
