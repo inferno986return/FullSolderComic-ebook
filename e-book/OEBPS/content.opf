@@ -5,7 +5,7 @@
 		<dc:subject>Academic</dc:subject>
 		<dc:publisher>MightyOHM</dc:publisher>
 		<dc:identifier id="bookid">-</dc:identifier>
-		<dc:date>2018-02-18</dc:date>
+		<dc:date>2018-02-20</dc:date>
 		<dc:language>en</dc:language>
 		<dc:rights>Creative Commons BY-SA 4.0</dc:rights>
 		<meta content="main_cover_image" name="cover"/>
@@ -16,49 +16,48 @@
 		<item href="images/by-sa.png" id="image0" media-type="image/png"/>
 		<item href="images/cover.png" id="image1" media-type="image/png"/>
 		<item href="images/PD-icon.png" id="image2" media-type="image/png"/>
-		<item href="images/page1/img1.png" id="image3" media-type="image/png"/>
-		<item href="images/page1/img2.png" id="image4" media-type="image/png"/>
-		<item href="images/page1/img3.png" id="image5" media-type="image/png"/>
-		<item href="images/page1/img4.png" id="image6" media-type="image/png"/>
-		<item href="images/page1/img5.png" id="image7" media-type="image/png"/>
-		<item href="images/page1/img6.png" id="image8" media-type="image/png"/>
-		<item href="images/page2/img1.png" id="image9" media-type="image/png"/>
-		<item href="images/page2/img2.png" id="image10" media-type="image/png"/>
-		<item href="images/page2/img3.png" id="image11" media-type="image/png"/>
-		<item href="images/page2/img4.png" id="image12" media-type="image/png"/>
-		<item href="images/page2/img5.png" id="image13" media-type="image/png"/>
-		<item href="images/page2/img6.png" id="image14" media-type="image/png"/>
-		<item href="images/page3/img1.png" id="image15" media-type="image/png"/>
-		<item href="images/page3/img2.png" id="image16" media-type="image/png"/>
-		<item href="images/page3/img3.png" id="image17" media-type="image/png"/>
-		<item href="images/page3/img4.png" id="image18" media-type="image/png"/>
-		<item href="images/page3/img5.png" id="image19" media-type="image/png"/>
-		<item href="images/page3/img6.png" id="image20" media-type="image/png"/>
-		<item href="images/page4/img1.png" id="image21" media-type="image/png"/>
-		<item href="images/page4/img2.png" id="image22" media-type="image/png"/>
-		<item href="images/page4/img3.png" id="image23" media-type="image/png"/>
-		<item href="images/page4/img4.png" id="image24" media-type="image/png"/>
-		<item href="images/page4/img5.png" id="image25" media-type="image/png"/>
-		<item href="images/page4/img6.png" id="image26" media-type="image/png"/>
-		<item href="images/page5/img1.png" id="image27" media-type="image/png"/>
-		<item href="images/page5/img2.png" id="image28" media-type="image/png"/>
-		<item href="images/page5/img3.png" id="image29" media-type="image/png"/>
-		<item href="images/page5/img4.png" id="image30" media-type="image/png"/>
-		<item href="images/page5/img5.png" id="image31" media-type="image/png"/>
-		<item href="images/page5/img6.png" id="image32" media-type="image/png"/>
-		<item href="images/page5/Page_6.png" id="image33" media-type="image/png"/>
-		<item href="images/page6/img1.png" id="image34" media-type="image/png"/>
-		<item href="images/page6/img2.png" id="image35" media-type="image/png"/>
-		<item href="images/page6/img3.png" id="image36" media-type="image/png"/>
-		<item href="images/page6/img4.png" id="image37" media-type="image/png"/>
-		<item href="images/page6/img5.png" id="image38" media-type="image/png"/>
-		<item href="images/page6/img6.png" id="image39" media-type="image/png"/>
-		<item href="images/page7/img1.png" id="image40" media-type="image/png"/>
-		<item href="images/page7/img2.png" id="image41" media-type="image/png"/>
-		<item href="images/page7/img3.png" id="image42" media-type="image/png"/>
-		<item href="images/page7/img4.png" id="image43" media-type="image/png"/>
-		<item href="images/page7/img5.png" id="image44" media-type="image/png"/>
-		<item href="images/page7/img6.png" id="image45" media-type="image/png"/>
+		<item href="images/page1/img1.jpg" id="image3" media-type="image/jpeg"/>
+		<item href="images/page1/img2.jpg" id="image4" media-type="image/jpeg"/>
+		<item href="images/page1/img3.jpg" id="image5" media-type="image/jpeg"/>
+		<item href="images/page1/img4.jpg" id="image6" media-type="image/jpeg"/>
+		<item href="images/page1/img5.jpg" id="image7" media-type="image/jpeg"/>
+		<item href="images/page1/img6.jpg" id="image8" media-type="image/jpeg"/>
+		<item href="images/page2/img1.jpg" id="image9" media-type="image/jpeg"/>
+		<item href="images/page2/img2.jpg" id="image10" media-type="image/jpeg"/>
+		<item href="images/page2/img3.jpg" id="image11" media-type="image/jpeg"/>
+		<item href="images/page2/img4.jpg" id="image12" media-type="image/jpeg"/>
+		<item href="images/page2/img5.jpg" id="image13" media-type="image/jpeg"/>
+		<item href="images/page2/img6.jpg" id="image14" media-type="image/jpeg"/>
+		<item href="images/page3/img1.jpg" id="image15" media-type="image/jpeg"/>
+		<item href="images/page3/img2.jpg" id="image16" media-type="image/jpeg"/>
+		<item href="images/page3/img3.jpg" id="image17" media-type="image/jpeg"/>
+		<item href="images/page3/img4.jpg" id="image18" media-type="image/jpeg"/>
+		<item href="images/page3/img5.jpg" id="image19" media-type="image/jpeg"/>
+		<item href="images/page3/img6.jpg" id="image20" media-type="image/jpeg"/>
+		<item href="images/page4/img1.jpg" id="image21" media-type="image/jpeg"/>
+		<item href="images/page4/img2.jpg" id="image22" media-type="image/jpeg"/>
+		<item href="images/page4/img3.jpg" id="image23" media-type="image/jpeg"/>
+		<item href="images/page4/img4.jpg" id="image24" media-type="image/jpeg"/>
+		<item href="images/page4/img5.jpg" id="image25" media-type="image/jpeg"/>
+		<item href="images/page4/img6.jpg" id="image26" media-type="image/jpeg"/>
+		<item href="images/page5/img1.jpg" id="image27" media-type="image/jpeg"/>
+		<item href="images/page5/img2.jpg" id="image28" media-type="image/jpeg"/>
+		<item href="images/page5/img3.jpg" id="image29" media-type="image/jpeg"/>
+		<item href="images/page5/img4.jpg" id="image30" media-type="image/jpeg"/>
+		<item href="images/page5/img5.jpg" id="image31" media-type="image/jpeg"/>
+		<item href="images/page5/img6.jpg" id="image32" media-type="image/jpeg"/>
+		<item href="images/page6/img1.jpg" id="image33" media-type="image/jpeg"/>
+		<item href="images/page6/img2.jpg" id="image34" media-type="image/jpeg"/>
+		<item href="images/page6/img3.jpg" id="image35" media-type="image/jpeg"/>
+		<item href="images/page6/img4.jpg" id="image36" media-type="image/jpeg"/>
+		<item href="images/page6/img5.jpg" id="image37" media-type="image/jpeg"/>
+		<item href="images/page6/img6.jpg" id="image38" media-type="image/jpeg"/>
+		<item href="images/page7/img1.jpg" id="image39" media-type="image/jpeg"/>
+		<item href="images/page7/img2.jpg" id="image40" media-type="image/jpeg"/>
+		<item href="images/page7/img3.jpg" id="image41" media-type="image/jpeg"/>
+		<item href="images/page7/img4.jpg" id="image42" media-type="image/jpeg"/>
+		<item href="images/page7/img5.jpg" id="image43" media-type="image/jpeg"/>
+		<item href="images/page7/img6.jpg" id="image44" media-type="image/jpeg"/>
 		<item href="bookcover.xhtml" id="front_cover" media-type="application/xhtml+xml"/>
 		<item href="indicia.xhtml" id="indicia" media-type="application/xhtml+xml"/>
 		<item href="license.xhtml" id="license" media-type="application/xhtml+xml"/>
