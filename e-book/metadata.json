@@ -45,7 +45,15 @@
 						"pageNumber": "2",
 						"indentation": "1",
 						"pageName": "License",
-						"fileName": "license.xhtml"
+						"fileName": "license.xhtml",
+						"headingAnchorName": [
+							"Content license",
+							"E-book license"
+						],
+						"headingAnchorLink": [
+							"#content-license",
+							"#ebook-license"
+						]
 					},
 					{
 						"pageNumber": "3",

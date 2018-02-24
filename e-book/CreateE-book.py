@@ -13,6 +13,7 @@ import os
 import time
 import json
 from collections import OrderedDict
+import zipfile
 
 with open("metadata.json") as json_file:
     data = json.load((json_file), object_pairs_hook=OrderedDict) #For some reason the order is randomised, this preserves the order.
@@ -38,7 +39,7 @@ def GenOPF():
     #Fixed (non-reflowable) support
     if (data["textPresentation"] == "Reflowable" or data["textPresentation"] == "reflowable" or data["textPresentation"] == "reflow"):
         print('e-book type: Reflowable')
-        
+
     elif (data["textPresentation"] == "Fixed layout" or data["textPresentation"] == "Fixed Layout" or data["textPresentation"] == "fixed layout" or data["textPresentation"] == "fixed"):
         opf.write('\t\t<meta name="fixed-layout" content="true"/>\n')
         print('e-book type: Fixed layout')
@@ -67,7 +68,7 @@ def GenOPF():
     #Write out the NCX and cover image files
     opf.write('\t\t<item href="toc.ncx" id="ncx" media-type="application/x-dtbncx+xml"/>\n')
     #opf.write('\t\t<item href="'+ data["imagesFolder"] + '/' + data["epubCover"] +'" id="main_cover_image" media-type="image/jpeg"/>\n') #Removes duplicate output, leaving commented as I might it later for the Kindle covers.
-        
+
     #Write out the images
 
     imageindex = 0
@@ -200,6 +201,7 @@ def GenNCX():
         ncx.write('\t\t\t<text>' + data["pages"][currentpage]["pageName"] + '</text>\n')
         ncx.write('\t\t</navLabel>\n')
         ncx.write('\t\t<content src="'+ data["pages"][currentpage]["fileName"] +'" />\n')
+
         ncx.write('\t</navPoint>\n')
 
         currentpage += 1
@@ -213,13 +215,6 @@ def GenNCX():
 def GenEpub():
 #GenEpub.py - Generates an .epub file from the data provided.
 #Ideally with no errors or warnings from epubcheck (needs to be implemented, maybe with the Python wrapper).
-
-    import os
-    import json
-    import zipfile
-
-    with open('metadata.json') as json_file:
-        data = json.load(json_file)
 
     #Generate the mimetype.
     mime = open("mimetype", "w")
