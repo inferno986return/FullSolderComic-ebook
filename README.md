@@ -14,4 +14,4 @@ The e-book currently passes [epubcheck 4.0.2](https://github.com/IDPF/epubcheck)
 
 Book content such as text and images are licensed under the **Creative Commons Attribution-ShareAlike 4.0 International Public License**.
 
-Book code such as the .xhtml, .css and .xml files are licensed under **The Unlicense**.
+Book code such as the .xhtml, .css and .xml files are licensed under **Creative Commons Zero 1.0 Universal (CC0 1.0)**.
