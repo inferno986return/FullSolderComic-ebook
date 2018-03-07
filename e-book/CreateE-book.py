@@ -195,20 +195,41 @@ def GenNCX():
     totalpages = len(data["pages"]) #Number of pages
 
     while currentpage != totalpages: #Write out all the xhtml files as declared in the JSON, indendation currently unsupported (data["pages"][currentpage]["indentation"].
-
-        ncx.write('\t<navPoint id="navpoint-' + str(currentpage) + '" playOrder="' + str(index) + '">\n') #id=001 class=h1 playOrder=1
+        ncx.write('\t<navPoint id="navpoint-' + str(index) + '" playOrder="' + str(index) + '">\n') #id=001 class=h1 playOrder=1
         ncx.write('\t\t<navLabel>\n')
         ncx.write('\t\t\t<text>' + data["pages"][currentpage]["pageName"] + '</text>\n')
         ncx.write('\t\t</navLabel>\n')
-        ncx.write('\t\t<content src="'+ data["pages"][currentpage]["fileName"] +'" />\n')
+        ncx.write('\t\t<content src="' + data["pages"][currentpage]["fileName"] + '" />\n')
+
+    #Write out the page's anchor tags.
+        try:
+            currentanchor = 0
+            totalanchors = len(data["pages"][currentpage]["anchorNames"])
+    
+            while currentanchor != totalanchors:
+                index += 1
+                
+                ncx.write('\t\t<navPoint id="navpoint-' + str(index) + '" playOrder="' + str(index) + '">\n') #id=001 class=h1 playOrder=1
+                ncx.write('\t\t\t\t<navLabel>\n')
+                ncx.write('\t\t\t\t\t<text>' + data["pages"][currentpage]["anchorNames"]["anchorName" + str(currentanchor) + ""] + '</text>\n')
+                ncx.write('\t\t\t\t</navLabel>\n')
+                ncx.write('\t\t\t\t<content src="'+ data["pages"][currentpage]["fileName"] + data["pages"][currentpage]["anchorLinks"]["anchorLink" + str(currentanchor) + ""] + '" />\n')
+                ncx.write('\t\t</navPoint>\n')
+                
+                currentanchor += 1
+                
+            print('Added anchor tags to page ' + str(currentpage) + ', ' + data["pages"][currentpage]["fileName"] + '.')
+
+        except KeyError:
+            print('Skipped page ' + str(currentpage) + ', ' + data["pages"][currentpage]["fileName"] + ' as it had no anchor tags.')
 
         ncx.write('\t</navPoint>\n')
-
+        
         currentpage += 1
         index += 1
-
+        
     ncx.write('</navMap>\n')
-
+    
     #End of file
     ncx.write('</ncx>')
 
