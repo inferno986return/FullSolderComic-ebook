@@ -34,7 +34,7 @@ def GenOPF():
     opf.write('\t\t<dc:date>' + (time.strftime("%Y-%m-%d")) + '</dc:date>\n') #YYYY[-MM[-DD]]
     opf.write('\t\t<dc:language>' + data["language"] + '</dc:language>\n')
     opf.write('\t\t<dc:rights>' + data["rights"] + '</dc:rights>\n')
-    opf.write('\t\t<meta content="main_cover_image" name="cover"/>\n')
+    opf.write('\t\t<meta content="" name="cover"/>\n')
 
     #Fixed (non-reflowable) support
     if (data["textPresentation"] == "Reflowable" or data["textPresentation"] == "reflowable" or data["textPresentation"] == "reflow"):
@@ -74,29 +74,51 @@ def GenOPF():
     imageindex = 0
 
     for subdir, dirs, files in os.walk(data["containerFolder"] + os.sep + data["imagesFolder"]):
+
         for file in files:
             filepath = subdir + os.sep + file
             correctfilepath = filepath.replace(data["containerFolder"] + os.sep, "") #removes the redudant OEBPS
 
-            if filepath.endswith(".jpg") or filepath.endswith(".jpeg") or filepath.endswith(".jpe"):
-                opf.write('\t\t<item href="' + correctfilepath + '" id="image' + str(imageindex) + '" media-type="image/jpeg"/>\n')
-                print (filepath)
-                imageindex += 1
+            if file == data["epubCover"]:
+            
+                if filepath.endswith(".jpg") or filepath.endswith(".jpeg") or filepath.endswith(".jpe"):
+                    opf.write('\t\t<item href="' + correctfilepath + '" id="cover" media-type="image/jpeg"/>\n')
+                    print (filepath)
 
-            elif filepath.endswith(".png"):
-                opf.write('\t\t<item href="' + correctfilepath + '" id="image' + str(imageindex) + '" media-type="image/png"/>\n')
-                print (filepath)
-                imageindex += 1
+                elif filepath.endswith(".png"):
+                    opf.write('\t\t<item href="' + correctfilepath + '" id="cover" media-type="image/png"/>\n')
+                    print (filepath)
 
-            elif filepath.endswith(".gif"):
-                opf.write('\t\t<item href="' + correctfilepath + '" id="image' + str(imageindex) + '" media-type="image/gif"/>\n')
-                print (filepath)
-                imageindex += 1
+                elif filepath.endswith(".gif"):
+                    opf.write('\t\t<item href="' + correctfilepath + '" id="cover" media-type="image/gif"/>\n')
+                    print (filepath)
+                    imageindex += 1
 
-            elif filepath.endswith(".svg"):
-                opf.write('\t\t<item href="' + correctfilepath + '" id="image' + str(imageindex) + '" media-type="image/svg+xml"/>\n')
-                print (filepath)
-                imageindex += 1
+                elif filepath.endswith(".svg"):
+                    opf.write('\t\t<item href="' + correctfilepath + '" id="cover" media-type="image/svg+xml"/>\n')
+                    print (filepath)
+
+            if file != data["epubCover"]:
+            
+                if filepath.endswith(".jpg") or filepath.endswith(".jpeg") or filepath.endswith(".jpe"):
+                    opf.write('\t\t<item href="' + correctfilepath + '" id="image' + str(imageindex) + '" media-type="image/jpeg"/>\n')
+                    print (filepath)
+                    imageindex += 1
+
+                elif filepath.endswith(".png"):
+                    opf.write('\t\t<item href="' + correctfilepath + '" id="image' + str(imageindex) + '" media-type="image/png"/>\n')
+                    print (filepath)
+                    imageindex += 1
+
+                elif filepath.endswith(".gif"):
+                    opf.write('\t\t<item href="' + correctfilepath + '" id="image' + str(imageindex) + '" media-type="image/gif"/>\n')
+                    print (filepath)
+                    imageindex += 1
+
+                elif filepath.endswith(".svg"):
+                    opf.write('\t\t<item href="' + correctfilepath + '" id="image' + str(imageindex) + '" media-type="image/svg+xml"/>\n')
+                    print (filepath)
+                    imageindex += 1
 
     #Write out all the pages in the book.
     #Count all the instances within the pages block.
