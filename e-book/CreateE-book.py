@@ -34,7 +34,7 @@ def GenOPF():
     opf.write('\t\t<dc:date>' + (time.strftime("%Y-%m-%d")) + '</dc:date>\n') #YYYY[-MM[-DD]]
     opf.write('\t\t<dc:language>' + data["language"] + '</dc:language>\n')
     opf.write('\t\t<dc:rights>' + data["rights"] + '</dc:rights>\n')
-    opf.write('\t\t<meta content="" name="cover"/>\n')
+    opf.write('\t\t<meta content="' + data["imagesFolder"] + '/' + data["epubCover"] + '" name="cover"/>\n')
 
     #Fixed (non-reflowable) support
     if (data["textPresentation"] == "Reflowable" or data["textPresentation"] == "reflowable" or data["textPresentation"] == "reflow"):
