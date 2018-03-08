@@ -1,7 +1,7 @@
 /*Zylon Stylesheet CSS - zstylesheet.css - v0.1
 -------------------------------------------
 
-Part of Project Zylon though licensed under the Unlicense. License can be viewed at: http://unlicense.org/
+Part of Project Zylon though licensed under Creative Commons Zero 1.0 Universal (CC0 1.0). License can be viewed at: https://creativecommons.org/publicdomain/zero/1.0/
 Need help? Refer to the Zylon Guide at: (ebookbuild.github.io/ - link doesn't work yet)
 
 Exact values are recommended. Avoid using words such as small to describe the size of a font or red for the colour.
@@ -39,6 +39,17 @@ h4.title
 	font-size: 1.5em;
 	font-weight: normal;
 	text-align: center;
+}
+
+/*Indicia Headings*/
+
+h1.indicia-heading
+{
+	text-align: center;
+	font-size: small; /*small works best here rather than a specific em*/
+	font-family: sans-serif;
+	font-weight: bold;
+	margin-bottom: 1em;
 }
 
 /*Chapter Headings*/
@@ -111,45 +122,53 @@ p
 	text-align: justify;
 	text-indent: 1em;
 	hyphens: none;
-	display: inline-block;
 }
 
-.small-text /*For the indicia*/
+p.indicia, .indicia
 {
-	font-size: 0.8em;
+	font-size: small; /*0.8em or small*/
+	text-align: center !important;
+	text-indent: 0em !important;
+	margin-left: 5%;
+	margin-right: 5%;
 }
 
-.noindent /*Every starting paragraph should start with this.*/
+p.small-text, .small-text /*For the indicia*/
+{
+	font-size: 0.7em; /*0.8em or small*/
+}
+
+p.noindent, .noindent /*Every starting paragraph should start with this.*/
 {
 	text-indent: 0em !important;
 }
 
-.top
+p.top, .top
 {
 	margin-top: 1em;
 }
 
-.top2
+p.top2, .top2
 {
 	margin-top: 2em;
 }
 
-.bottom
+p.bottom, .bottom
 {
 	margin-bottom: 1em;
 }
 
-.bottom2
+p.bottom2, .bottom2
 {
 	margin-bottom: 2em;
 }
 
-.left
+p.left, .left
 {
 	text-align: left;
 }
 
-.center
+p.center, .center
 {
 	text-align: center !important;
   text-indent: 0em !important;
@@ -157,17 +176,17 @@ p
   margin-right: 5%;
 }
 
-.right
+p.right, .right
 {
 	text-align: right;
 }
 
-.sans
+p.sans, .sans
 {
 	font-family: sans-serif;
 }
 
-.mono
+p.mono, .mono
 {
 	font-family: monospace;
 }
@@ -207,7 +226,7 @@ p.quote2
 
 /*References*/
 
-.ref
+p.ref, .ref
 {
 	margin-left: 0em;
 	font-size: 0.9em;
@@ -259,7 +278,7 @@ li
   hyphens: none;
 }
 
-.sublist
+p.sublist, .sublist
 {
 	margin: 0em;
 }
@@ -315,7 +334,7 @@ td, th
 	/*border: solid 2px; Useful for debugging.*/
 }
 
-.image
+p.image, .image
 {
 	display: block;
 	margin: auto;
@@ -333,7 +352,7 @@ td, th
 
 /*RTL (Right-to-Left) - For Arabic, Persian, Hebrew, etc...*/
 
-.rtl
+p.rtl, .rtl
 {
 	direction: rtl;
 }
