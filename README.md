@@ -1,6 +1,6 @@
 ## FullSolderComic-ebook
 
-*Download the latest release of the ePub by going to the[releases](https://github.com/inferno986return/FullSolderComic-ebook/releases) section of this repository.*
+*Download the latest release of the ePub by going to the [releases](https://github.com/inferno986return/FullSolderComic-ebook/releases) section of this repository.*
 
 ### Overview:
 
