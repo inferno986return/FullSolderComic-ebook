@@ -1,5 +1,7 @@
 ## FullSolderComic-ebook
 
+*Download the latest release of the ePub by going to the[releases](https://github.com/inferno986return/FullSolderComic-ebook/releases) section of this repository.*
+
 ### Overview:
 
 This is an ePub production of MightyOhm's soldering tutorial comic *Solder is Easy: Here's How to Do It* at (http://mightyohm.com/blog/2011/04/soldering-is-easy-comic-book/).
