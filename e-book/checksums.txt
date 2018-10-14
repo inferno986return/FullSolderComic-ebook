@@ -1,0 +1,5 @@
+Checksum values for FullSolderComic.epub
+=============================================
+
+MD5: 4e3cb8a53831170f552051a48d0fd7d1
+SHA512: f58ebf55e28ed6c0d465ed7b28d946d0f2cae97b1ab0b146337aee1c8aecc83bea3a156fdf2a001fc6ed3176927d63695978b25c05aa4ba024311594eb9c2e61

@@ -1,27 +1,28 @@
 #!/usr/bin/env python
 
-#CreateE-book.py - Combines GenMetadata.py and GenEpub.py into one easy script.
+#CreateE-book.py v0.81 - Generates an ePub file using data from the metadata.json.
 
-#GenMetadata.py - Generates the content.opf and toc.ncx files from the metadata.json file.
+#This file is part of the ebookbuild project (also known as Project Zylon) which is licensed under GNU General Public License v3.0 (GNU GPLv3): https://www.gnu.org/licenses/gpl-3.0.en.html
 
 #opf = "OEBPS/content.opf"
 #ncx = "OEBPS/toc.ncx"
-
-#JSON extraction magic
 
 import os
 import time
 import json
 from collections import OrderedDict
+import re
 import zipfile
+import hashlib
 
+#JSON extraction magic
 with open("metadata.json") as json_file:
     data = json.load((json_file), object_pairs_hook=OrderedDict) #For some reason the order is randomised, this preserves the order.
 
 #Create a compatible content.opf from scratch.
 def GenOPF():
 
-    opf = open(data["containerFolder"] + os.sep + "content.opf", "w")
+    opf = open(data["containerFolder"] + os.sep + "content.opf", "w", encoding="utf-8")
     opf.write('<?xml version="1.0" encoding="UTF-8" standalone="no"?><package xmlns="http://www.idpf.org/2007/opf" unique-identifier="bookid" version="2.0">\n')
 
     #Metadata tags
@@ -31,7 +32,7 @@ def GenOPF():
     opf.write('\t\t<dc:subject>' + data["subject"] + '</dc:subject>\n')
     opf.write('\t\t<dc:publisher>' + data["publisher"] + '</dc:publisher>\n')
     opf.write('\t\t<dc:identifier id="bookid">' + data["ISBN"] + '</dc:identifier>\n')
-    opf.write('\t\t<dc:date>' + (time.strftime("%Y-%m-%d")) + '</dc:date>\n') #YYYY[-MM[-DD]]
+    opf.write('\t\t<dc:date>' + (time.strftime("%Y-%m-%d"+"T%H:%M:%S")) + '</dc:date>\n') #Date and time using ISO 8601 to ensure a unique checksum (YYYY-MM-DDThh:mm:ss)
     opf.write('\t\t<dc:language>' + data["language"] + '</dc:language>\n')
     opf.write('\t\t<dc:rights>' + data["rights"] + '</dc:rights>\n')
     opf.write('\t\t<meta content="cover" name="cover"/>\n')
@@ -80,7 +81,7 @@ def GenOPF():
             correctfilepath = filepath.replace(data["containerFolder"] + os.sep, "") #removes the redudant OEBPS
 
             if file == data["epubCover"]:
-            
+
                 if filepath.endswith(".jpg") or filepath.endswith(".jpeg") or filepath.endswith(".jpe"):
                     opf.write('\t\t<item href="' + correctfilepath + '" id="cover" media-type="image/jpeg"/>\n')
                     print (filepath)
@@ -99,7 +100,7 @@ def GenOPF():
                     print (filepath)
 
             if file != data["epubCover"]:
-            
+
                 if filepath.endswith(".jpg") or filepath.endswith(".jpeg") or filepath.endswith(".jpe"):
                     opf.write('\t\t<item href="' + correctfilepath + '" id="image' + str(imageindex) + '" media-type="image/jpeg"/>\n')
                     print (filepath)
@@ -127,8 +128,8 @@ def GenOPF():
     totalpages = len(data["pages"]) #Number of pages
 
     while currentpage != totalpages: #Write out all the xhtml files as declared in the JSON.
-        pageid = str.lower(data["pages"][currentpage]["pageName"]) #remove capital letters and spaces from the id attribute (works with Unicode)
-        correctpageid = pageid.replace(" ","_")
+        pageid = data["pages"][currentpage]["fileName"] #remove capital letters and spaces from the id attribute (works with Unicode)
+        correctpageid = pageid.replace(".xhtml", "")
 
         opf.write('\t\t<item href="' + data["pages"][currentpage]["fileName"] + '" id="' + correctpageid + '" media-type="application/xhtml+xml"/>\n')
         currentpage += 1
@@ -163,8 +164,8 @@ def GenOPF():
     totalpages = len(data["pages"]) #Number of pages
 
     while currentpage != totalpages: #Write out all the xhtml files as declared in the JSON.
-        pageid = str.lower(data["pages"][currentpage]["pageName"]) #remove capital letters and spaces from the id attribute (works with Unicode)
-        correctpageid = pageid.replace(" ","_")
+        pageid = data["pages"][currentpage]["fileName"] #remove capital letters and spaces from the id attribute (works with Unicode)
+        correctpageid = pageid.replace(".xhtml", "") #pageid.replace(" & ", " "), pageid.replace("'", "&quot;"), pageid.replace('"', "&dquot;"), pageid.replace('<', "&lt;"), pageid.replace('>', "&gt;") #Remove the characters disallowed for ID in XML.
 
         opf.write('\t\t<itemref idref="' + correctpageid + '"/>\n')
         currentpage += 1
@@ -174,12 +175,13 @@ def GenOPF():
     #End of file
     opf.write('</package>')
 
-    opf.close() #Eventually save directly to the OEBPS folder
+    #Eventually save directly to the OEBPS folder
+    opf.close()
 
 #Create a compatible toc.ncx from scratch.
 def GenNCX():
 
-    ncx = open(data["containerFolder"] + os.sep + "toc.ncx", "w")
+    ncx = open(data["containerFolder"] + os.sep + "toc.ncx", "w", encoding="utf-8")
 
     ncx.write('<?xml version="1.0" encoding="UTF-8" ?>\n')
     ncx.write('<!DOCTYPE ncx PUBLIC "-//NISO//DTD ncx 2005-1//EN" "http://www.daisy.org/z3986/2005/ncx-2005-1.dtd"><ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">\n')
@@ -227,31 +229,31 @@ def GenNCX():
         try:
             currentanchor = 0
             totalanchors = len(data["pages"][currentpage]["anchorNames"])
-    
+
             while currentanchor != totalanchors:
                 index += 1
-                
+
                 ncx.write('\t\t<navPoint id="navpoint-' + str(index) + '" playOrder="' + str(index) + '">\n') #id=001 class=h1 playOrder=1
                 ncx.write('\t\t\t\t<navLabel>\n')
                 ncx.write('\t\t\t\t\t<text>' + data["pages"][currentpage]["anchorNames"]["anchorName" + str(currentanchor) + ""] + '</text>\n')
                 ncx.write('\t\t\t\t</navLabel>\n')
                 ncx.write('\t\t\t\t<content src="'+ data["pages"][currentpage]["fileName"] + data["pages"][currentpage]["anchorLinks"]["anchorLink" + str(currentanchor) + ""] + '" />\n')
                 ncx.write('\t\t</navPoint>\n')
-                
+
                 currentanchor += 1
-                
+
             print('Added anchor tags to page ' + str(currentpage) + ', ' + data["pages"][currentpage]["fileName"] + '.')
 
         except KeyError:
             print('Skipped page ' + str(currentpage) + ', ' + data["pages"][currentpage]["fileName"] + ' as it had no anchor tags.')
 
         ncx.write('\t</navPoint>\n')
-        
+
         currentpage += 1
         index += 1
-        
+
     ncx.write('</navMap>\n')
-    
+
     #End of file
     ncx.write('</ncx>')
 
@@ -317,6 +319,39 @@ def GenEpub():
 #print(getinfo.compress_size(zf))
 #print(getinfo.file_size(zf))
 
+def GenChksum():
+#Generate and show MD5 and SHA512 checksums for the ePub using hashlib
+
+    md5 = hashlib.md5()
+    sha512 = hashlib.sha512()
+
+    with open(data["fileName"] + ".epub", 'rb') as afile:
+        buffer = afile.read()
+        md5.update(buffer)
+        sha512.update(buffer)
+
+    # Seperates the checksum output from the files going into the book.
+    print()
+    print("-This output is saved to checksums.txt-")
+    print()
+    print("Checksum values for " + data["fileName"] + ".epub")
+    print("=============================================")
+    print()
+    print("MD5: "+ md5.hexdigest())
+    print("SHA512: "+ sha512.hexdigest())
+    print()
+
+    chksum = metainf = open("checksums.txt", "w")
+
+    chksum.write("Checksum values for " + data["fileName"] + ".epub\n")
+    chksum.write("=============================================\n")
+    chksum.write("\n")
+
+    chksum.write("MD5: " + md5.hexdigest() + "\n")
+    chksum.write("SHA512: " + sha512.hexdigest())
+
+
 GenOPF()
 GenNCX()
 GenEpub()
+GenChksum()
