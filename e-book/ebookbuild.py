@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-#CreateE-book.py v0.8111 - Generates an ePub file using data from the metadata.json.
+#ebookbuild.py v0.8114 - Generates an ePub file using data from the metadata.json.
 
 #This file is part of the ebookbuild project (also known as Project Zylon) which is licensed under GNU General Public License v3.0 (GNU GPLv3): https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -8,7 +8,7 @@
 #ncx = "OEBPS/toc.ncx"
 
 import os
-import time
+import datetime, time
 import json
 from collections import OrderedDict
 import re
@@ -18,7 +18,7 @@ import hashlib
 #Intro text
 print()
 print("================================================")
-print("ebookbuild, v0.8111 - Copyright (C) 2019 Hal Motley")
+print("ebookbuild, v0.8114 - Copyright (C) 2019 Hal Motley")
 print("https://www.github.com/inferno986return/ebookbuild/")
 print()
 print("This program comes with ABSOLUTELY NO WARRANTY, for details see GPL-3.txt.")
@@ -32,6 +32,7 @@ with open("metadata.json") as json_file:
 
 #Create a compatible content.opf from scratch.
 def GenOPF():
+    utctime = datetime.datetime.utcnow().replace(microsecond=0).isoformat()
 
     opf = open(data["containerFolder"] + os.sep + "content.opf", "w", encoding="utf-8")
     opf.write('<?xml version="1.0" encoding="UTF-8" standalone="no"?><package xmlns="http://www.idpf.org/2007/opf" unique-identifier="bookid" version="2.0">\n')
@@ -43,7 +44,7 @@ def GenOPF():
     opf.write('\t\t<dc:subject>' + data["subject"] + '</dc:subject>\n')
     opf.write('\t\t<dc:publisher>' + data["publisher"] + '</dc:publisher>\n')
     opf.write('\t\t<dc:identifier id="bookid">' + data["ISBN"] + '</dc:identifier>\n')
-    opf.write('\t\t<dc:date>' + (time.strftime("%Y-%m-%d"+"T%H:%M:%S")) + '</dc:date>\n') #Date and time using ISO 8601 to ensure a unique checksum (YYYY-MM-DDThh:mm:ss)
+    opf.write('\t\t<dc:date>' + utctime + '</dc:date>\n') #Date and time using ISO 8601 to ensure a unique checksum (YYYY-MM-DDThh:mm:ss)
     opf.write('\t\t<dc:language>' + data["language"] + '</dc:language>\n')
     opf.write('\t\t<dc:rights>' + data["rights"] + '</dc:rights>\n')
     opf.write('\t\t<meta content="cover" name="cover"/>\n')
@@ -332,34 +333,40 @@ def GenEpub():
 
 def GenChksum():
 #Generate and show MD5 and SHA512 checksums for the ePub using hashlib
+    utctime = datetime.datetime.utcnow().replace(microsecond=0).isoformat(' ')
 
     md5 = hashlib.md5()
+    sha256 = hashlib.sha256()
     sha512 = hashlib.sha512()
 
     with open(data["fileName"] + ".epub", 'rb') as afile:
         buffer = afile.read()
+
         md5.update(buffer)
+        sha256.update(buffer)
         sha512.update(buffer)
 
-    # Seperates the checksum output from the files going into the book.
-    print()
-    print("-This output is saved to checksums.txt-")
-    print()
-    print("Checksum values for " + data["fileName"] + ".epub")
-    print("=============================================")
-    print()
-    print("MD5: "+ md5.hexdigest())
-    print("SHA512: "+ sha512.hexdigest())
-    print()
+        # Seperates the checksum output from the files going into the book.
+        print()
+        print("-This output is saved to checksums.txt-")
+        print()
+        print("Checksum values for " + data["fileName"] + ".epub on " + str(utctime) + " UTC")
+        print("=============================================================================")
+        print()
+        print("MD5: "+ md5.hexdigest())
+        print("SHA-256: "+ sha256.hexdigest())
+        print("SHA-512: "+ sha512.hexdigest())
+        print()
 
-    chksum = metainf = open("checksums.txt", "w")
+        chksum = metainf = open("checksums.txt", "w")
 
-    chksum.write("Checksum values for " + data["fileName"] + ".epub\n")
-    chksum.write("=============================================\n")
-    chksum.write("\n")
+        chksum.write("Checksum values for " + data["fileName"] + ".epub on " + str(utctime) + "UTC" + "\n")
+        chksum.write("=================================================================================\n")
+        chksum.write("\n")
 
-    chksum.write("MD5: " + md5.hexdigest() + "\n")
-    chksum.write("SHA512: " + sha512.hexdigest())
+        chksum.write("MD5: " + md5.hexdigest() + "\n")
+        chksum.write("SHA-256: " + sha256.hexdigest() + "\n")
+        chksum.write("SHA-512: " + sha512.hexdigest() + "\n")
 
 
 GenOPF()
